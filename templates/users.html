@@ -1,0 +1,41 @@
+{%if flag == true %}
+<h1>Update User Form</h1>
+<form method="POST" action="">
+  Name <input type="text" name="name" value="{{specificUser.1}}"/>
+  <br>
+  Email <input type="email" name="email" value="{{specificUser.2}}"/>
+  <br>
+  <input type="submit">
+</form>
+{% else %}
+<h1>Add User Form</h1>
+<form method="POST" action="">
+  Name <input type="text" name="name" />
+  <br>
+  Email <input type="email" name="email" />
+  <br>
+  <input type="submit">
+</form>
+{% endif %}
+
+
+
+<table border = 1>
+  {% for user in userDetails %}
+  <tr>
+    <td> {{user[0]}} </td>
+    <td> {{user[1]}} </td>
+    <td> {{user[2]}} </td>
+    <td>
+
+
+               <a href="/update/{{user.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{user.0}}">Edit</a>
+                <a href="/delete/{{ user.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+
+                    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+
